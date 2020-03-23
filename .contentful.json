@@ -1,0 +1,10 @@
+{
+    "development": {
+        "spaceId": "xvdc7a8rrl1y",
+        "accessToken": "ubpsuiO_0e8lf7LmIYkLKeKsFcsSNDumCdXQ_vlxTl4"
+    },
+    "development-test": {
+        "spaceId": "z7xa11bouz4t",
+        "accessToken": "1WxM88732ZvVoXkGqQaXCnLzpxxx8JHBaUWyA8W5lqM"
+    }
+}

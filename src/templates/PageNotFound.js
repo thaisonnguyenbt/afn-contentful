@@ -15,7 +15,6 @@ class PageNotFound extends React.Component {
         super(props);
 
         this.state = {
-            page: this.props.pageContext.page
         };
     }
 

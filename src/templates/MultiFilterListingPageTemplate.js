@@ -14,7 +14,7 @@ class MultiFilterLisingPageTemplate extends React.Component {
         this.state = {
             language: this.props.pageContext.rootNode.node_locale.substring(0, 2),
             locale: this.props.pageContext.rootNode.node_locale,
-            currentPage: this.props.pageContext.page,
+            currentPage: this.props.data.contentfulPage,
             filterPages: this.props.data.allContentfulPage.edges.map((filterPage) => filterPage.node)
         };
     }
@@ -47,7 +47,10 @@ MultiFilterLisingPageTemplate.defaultProps = defaultProps;
 export default MultiFilterLisingPageTemplate;
 
 export const postQuery = graphql`
-    query($contentCategory: String!, $locale: String!) {
+    query($id: String!, $contentCategory: String!, $locale: String!) {
+        contentfulPage(id: { eq: $id }) {
+            ...BasicPageFields
+        }
         allContentfulPage(filter: {contentCategory: {category: {eq: $contentCategory}}, node_locale: {eq: $locale}}) {
             edges {
                 node {

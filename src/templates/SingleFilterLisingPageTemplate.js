@@ -15,7 +15,7 @@ class SingleFilterLisingPageTemplate extends React.Component {
         this.state = {
             language: this.props.pageContext.rootNode.node_locale.substring(0, 2),
             locale: this.props.pageContext.rootNode.node_locale,
-            currentPage: this.props.pageContext.page,
+            currentPage: this.props.data.contentfulPage,
             filterPages: this.props.data.allContentfulPage.edges.map((filterPage) => filterPage.node)
         };
     }
@@ -48,7 +48,10 @@ SingleFilterLisingPageTemplate.defaultProps = defaultProps;
 export default SingleFilterLisingPageTemplate;
 
 export const postQuery = graphql`
-    query($tags: [String!], $locale: String!) {
+    query($id: String!, $tags: [String!], $locale: String!) {
+        contentfulPage(id: { eq: $id }) {
+            ...BasicPageFields
+        }
         allContentfulPage(filter: {tags: {elemMatch: {single_filter_listing: {elemMatch: {tag: {tag: {in: $tags}}}}}}, node_locale: {eq: $locale}}) {
             edges {
                 node {

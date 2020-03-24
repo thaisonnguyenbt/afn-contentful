@@ -16,6 +16,7 @@ class RecipeDetails extends React.Component {
 
         let locale = props.locale;
         this.state = {
+            foodLabels: this.props.foodLabels,
             recipe : getRecipeData(props.recipe, locale)
         };
     }
@@ -102,9 +103,9 @@ class RecipeDetails extends React.Component {
                                     </button>
                                 </div>
                             </div>
-                            { !!this.state.recipe.foodLabels && !!this.state.recipe.foodLabels.length && <div className={this.state.recipe.foodLabels.length < 5 ? "m-icon-text desktop" : "m-icon-text not-mobile"}>
+                            { !!this.state.foodLabels && !!this.state.foodLabels.length && <div className={this.state.foodLabels.length < 5 ? "m-icon-text desktop" : "m-icon-text not-mobile"}>
                                 <div className="row m-icon-text-list">
-                                    { this.state.recipe.foodLabels.map((foodLabel, i) => {
+                                    { this.state.foodLabels.map((foodLabel, i) => {
                                         return <div className="col-6 col-md-4 col-lg-3" key={i}>
                                             <a className="m-icon-text-listItem" href="https://asianfoodnetwork.com/en/search.html?search=halal">
                                                 <div className="m-icon-text-listItem__img">
@@ -118,9 +119,9 @@ class RecipeDetails extends React.Component {
                                     })}
                                 </div>
                             </div> }
-                            { !!this.state.recipe.foodLabels && !!this.state.recipe.foodLabels.length && <div className="m-icon-text mobile-only">
+                            { !!this.state.foodLabels && !!this.state.foodLabels.length && <div className="m-icon-text mobile-only">
                                 <div className="row active m-icon-text-list" data-list="teaser">
-                                    { this.state.recipe.foodLabels.slice(0, 4).map((foodLabel, i) => {
+                                    { this.state.foodLabels.slice(0, 4).map((foodLabel, i) => {
                                         return <div className="col-6 col-md-4 col-lg-3" key={i}>
                                             <Link className="m-icon-text-listItem" to="/en/search.html?search=halal">
                                                 <div className="m-icon-text-listItem__img">
@@ -133,8 +134,8 @@ class RecipeDetails extends React.Component {
                                         </div>
                                     })}
                                 </div>
-                                { this.state.recipe.foodLabels.length > 4 && <div className="row" data-list="more">
-                                    { this.state.recipe.foodLabels.slice(4, this.state.recipe.foodLabels.length).map((foodLabel, i) => {
+                                { this.state.foodLabels.length > 4 && <div className="row" data-list="more">
+                                    { this.state.foodLabels.slice(4, this.state.foodLabels.length).map((foodLabel, i) => {
                                         return <div className="col-6 col-md-4 col-lg-3 m-icon-text-listItem" key={i}>
                                             <div className="m-icon-text-listItem__img">
                                                 <img src={require('../../../images/common/food-icons/' + foodLabel.value + '.svg')} alt={foodLabel.name} title={foodLabel.name} />

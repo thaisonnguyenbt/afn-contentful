@@ -1,5 +1,5 @@
 export const recipeDetailsPageFields = graphql`
-    fragment RecipeDetailsPageFields on ContentfulPage {
+    fragment BasicPageFields on ContentfulPage {
         id
         contentful_id
         node_locale
@@ -34,6 +34,10 @@ export const recipeDetailsPageFields = graphql`
             tag
             name
         }
+        foodLabels {
+            value
+            name
+        }
     }`
 
 export const filterEntryFields = graphql`
@@ -56,6 +60,10 @@ export const filterEntryFields = graphql`
         }
         tags {
             tag
+            name
+        }
+        foodLabels {
+            value
             name
         }
     }`

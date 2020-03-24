@@ -1,16 +1,5 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import halalIcon from '../../../images/common/food-icons/halal.svg';
-import glutenFreeIcon from '../../../images/common/food-icons/gluten-free.svg';
-import healthyIcon from '../../../images/common/food-icons/healthy.svg';
-//import noAlcoholIcon from '../../../images/common/food-icons/no-alcohol.svg';
-//import noMilkIcon from '../../../images/common/food-icons/no-milk.svg';
-//import noNutsIcon from '../../../images/common/food-icons/no-nuts.svg';
-//import noPorkIcon from '../../../images/common/food-icons/no-pork.svg';
-//import sugarFreeIcon from '../../../images/common/food-icons/sugar-free.svg';
-//import veganIcon from '../../../images/common/food-icons/vegan.svg';
-//import vegetarianIcon from '../../../images/common/food-icons/vegetarian.svg';
-//import withAlcoholIcon from '../../../images/common/food-icons/with-alcohol.svg';
 
 const propTypes = {};
 const defaultProps = {};
@@ -31,23 +20,15 @@ class MultipleFilterListingItemListView extends React.Component {
                     <div className="m-content-box__content">
                         <div className="m-content-box__upper">
                             <div className="m-icon-text">
-                                <div className="m-icon-text-list">
-                                    <div className="m-icon-text-listItem -small">
-                                        <div data-toggle="tooltip" data-placement="top" title="" className="m-icon-text-listItem__img w-tooltip" data-original-title="Halal">
-                                            <img src={halalIcon} alt="Halal" title="Halal" />
+                                {this.state.page.foodLabels && this.state.page.foodLabels.length && <div className="m-icon-text-list">
+                                    {this.state.page.foodLabels.map((foodLabel, i) => {
+                                        return <div key={i} className="m-icon-text-listItem -small">
+                                            <div data-toggle="tooltip" data-placement="top" title="" className="m-icon-text-listItem__img w-tooltip" data-original-title="Halal">
+                                                <img src={require('../../../images/common/food-icons/' + foodLabel.value + '.svg')} alt={foodLabel.name} title={foodLabel.name}  />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div className="m-icon-text-listItem -small">
-                                        <div data-toggle="tooltip" data-placement="top" title="" className="m-icon-text-listItem__img w-tooltip" data-original-title="Halal">
-                                            <img src={glutenFreeIcon} alt="Halal" title="Halal" />
-                                        </div>
-                                    </div>
-                                    <div className="m-icon-text-listItem -small">
-                                        <div data-toggle="tooltip" data-placement="top" title="" className="m-icon-text-listItem__img w-tooltip" data-original-title="Halal">
-                                            <img src={healthyIcon} alt="Halal" title="Halal" />
-                                        </div>
-                                    </div>
-                                </div>
+                                    })}
+                                </div>}
                             </div>
                         </div>
                         <div className="m-content-box__middle">

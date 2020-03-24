@@ -15,7 +15,7 @@ class PageOneCol extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            page: this.props.pageContext.page,
+            page: this.props.data.contentfulPage,
             language: this.props.pageContext.rootNode.node_locale.substring(0, 2),
             locale: this.props.pageContext.rootNode.node_locale
         };
@@ -35,3 +35,10 @@ PageOneCol.propTypes = propTypes;
 PageOneCol.defaultProps = defaultProps;
 
 export default PageOneCol;
+
+export const postQuery = graphql`
+    query($id: String!) {
+        contentfulPage(id: { eq: $id }) {
+            ...BasicPageFields
+        }
+    }`

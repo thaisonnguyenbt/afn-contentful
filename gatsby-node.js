@@ -316,8 +316,8 @@ exports.createPages = ({ actions, graphql }) => {
                             allLanguages,
                             siteMetadata,
                             rootNode: shortenLanguageRoot,
-                            page: node,
                             nav,
+                            id : node.id,
                             tags,
                             locale
                         },
@@ -335,8 +335,8 @@ exports.createPages = ({ actions, graphql }) => {
                             allLanguages,
                             siteMetadata,
                             rootNode: shortenLanguageRoot,
-                            page: node,
                             nav,
+                            id : node.id,
                             contentCategory : node.contentCategory.category,
                             locale
                         },
@@ -375,7 +375,7 @@ exports.createPages = ({ actions, graphql }) => {
                     allLanguages,
                     siteMetadata,
                     rootNode: shortenLanguageRoot,
-                    page: languageRoot,
+                    id: languageRoot.id,
                     nav: [shortenLanguageRoot]
                 },
             });
@@ -392,7 +392,7 @@ exports.createPages = ({ actions, graphql }) => {
                 allLanguages,
                 siteMetadata,
                 rootNode: rootNode,
-                page: defaultlLanguageRoot
+                id: defaultlLanguageRoot.id
             },
         })
 
@@ -405,8 +405,7 @@ exports.createPages = ({ actions, graphql }) => {
             context: {
                 allLanguages,
                 siteMetadata,
-                rootNode: rootNode,
-                page: defaultlLanguageRoot
+                rootNode: rootNode
             },
         })
     });

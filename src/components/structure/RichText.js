@@ -22,6 +22,7 @@ class RichText extends React.Component {
             locale: this.props.locale,
             language: this.props.language,
             tags: this.props.tags,
+            foodLabels: this.props.foodLabels,
             filterPages : this.props.filterPages
         };
     }
@@ -31,6 +32,9 @@ class RichText extends React.Component {
 
             renderNode: {
                 [BLOCKS.EMBEDDED_ASSET]: (asset) => {
+                    if (!asset.data.target || !asset.data.target.fields || !asset.data.target.fields.file) {
+                        return <></>
+                    }
                     const file = asset.data.target.fields.file["en-US"];
                     return <>
                         {file.contentType.startsWith("image") && 
@@ -58,7 +62,7 @@ class RichText extends React.Component {
                     } else if (contentType === `multipleFilterListing`) {
                         return <MultipleFilterListing data={node.data.target.fields} filterPages={this.state.filterPages} language={this.state.language} locale={this.state.locale}/>
                     } else if (contentType === `recipe`) {
-                        return <Recipe recipe={node.data.target.fields} language={this.state.language} locale={this.state.locale} />
+                        return <Recipe recipe={node.data.target.fields} language={this.state.language} locale={this.state.locale} foodLabels={this.state.foodLabels} />
                     } else if (contentType === `article`) {
                         return <Article article={node.data.target.fields} language={this.state.language} locale={this.state.locale} tags={this.state.tags} />
                     } else {

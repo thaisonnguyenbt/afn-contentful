@@ -1,7 +1,8 @@
 {
     "development": {
         "spaceId": "nbf38x72m5ft",
-        "accessToken": "55_YWf5ax8tXtOa4EISInofzLhmVdF6JA_e-BAhg8TA"
+        "accessToken": "55_YWf5ax8tXtOa4EISInofzLhmVdF6JA_e-BAhg8TA",
+        "host": "preview.contentful.com"
     },
     "development-test": {
         "spaceId": "z7xa11bouz4t",

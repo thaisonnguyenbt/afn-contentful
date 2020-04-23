@@ -7,14 +7,15 @@ if (process.env.NODE_ENV === `development`) {
     production: {
       spaceId: process.env.CONTENTFUL_SPACE_ID,
       accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      host: process.env.CONTENTFUL_HOST
     },
   }
 }
   
-const { spaceId, accessToken } = process.env.NODE_ENV === `development` ? contentfulConfig.development : contentfulConfig.production
+const { spaceId, accessToken, host } = process.env.NODE_ENV === `development` ? contentfulConfig.development : contentfulConfig.production
 
-if (!spaceId || !accessToken ) {
-    throw new Error(`CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN are required to build. Check the README.`) // eslint-disable-line
+if (!spaceId || !accessToken || !host ) {
+    throw new Error(`CONTENTFUL_SPACE_ID and CONTENTFUL_ACCESS_TOKEN and CONTENTFUL_HOST are required to build. Check the README.`) // eslint-disable-line
 }
 
 

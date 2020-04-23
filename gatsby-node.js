@@ -257,7 +257,7 @@ exports.createPages = ({ actions, graphql }) => {
                         let childNav = [];
                         navigations.forEach((navigation) => childNav.push(navigation));
                         childNav.push(getNavigationInfo(node));
-                        createAfnPage(contentfulchild, pathPrefix + '/' + node.slug, childNav);
+                        createAfnPage(contentfulchild, '/' + language + node.slug, childNav);
                     })
                 }
                 let nav = navigations;
@@ -295,7 +295,7 @@ exports.createPages = ({ actions, graphql }) => {
                      * For RECIPE and ARTICLE DETAILS page, query page data by page id
                      */
                     createPage({
-                        path: pathPrefix + '/' + node.slug,
+                        path: '/' + language + node.slug,
                         component: path.resolve(`src/templates/DetailsPageTemplate.js`),
                         context: {
                             allLanguages,
@@ -310,7 +310,7 @@ exports.createPages = ({ actions, graphql }) => {
                      * Template for Single Filter Listing Page
                      */
                     createPage({
-                        path: pathPrefix + '/' + node.slug,
+                        path: '/' + language + node.slug,
                         component: path.resolve(`src/templates/SingleFilterLisingPageTemplate.js`),
                         context: {
                             allLanguages,
@@ -323,13 +323,13 @@ exports.createPages = ({ actions, graphql }) => {
                         },
                     });
                 } else if (pageTemplateName === 'multipleFilterListing') {
-                    console.log(pathPrefix + '/' + node.slug)
+                    console.log('/' + language + node.slug)
                     
                     /**
                      * Template for Miltiple Filter Listing Page
                      */
                     createPage({
-                        path: pathPrefix + '/' + node.slug,
+                        path: '/' + language + node.slug,
                         component: path.resolve(`src/templates/MultiFilterListingPageTemplate.js`),
                         context: {
                             allLanguages,
@@ -346,7 +346,7 @@ exports.createPages = ({ actions, graphql }) => {
                      * default to PageTwoCol template
                      */
                     createPage({
-                        path: pathPrefix + '/' + node.slug,
+                        path: '/' + language + node.slug,
                         component: path.resolve(`src/templates/PageTwoCol.js`),
                         context: {
                             allLanguages,

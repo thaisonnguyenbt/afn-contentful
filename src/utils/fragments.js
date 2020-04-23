@@ -44,7 +44,6 @@ export const filterEntryFields = graphql`
     fragment FilterEntryFields on ContentfulPage {
         title
         slug
-        fullSlug
         description {
             description
         }
